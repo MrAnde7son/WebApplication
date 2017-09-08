@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebApplication2.Models.Post>
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+<h2>Blog</h2>
+<section>
+    <form action="#" method="get">
+        <h3>Filter posts</h3>
+        <p>
+            <label for="date">Date</label><input type="date" name="date"><br />
+        </p>
+        <p>
+            <label for="name">Name</label><input type="text" name="name"><br />
+        </p>
+        <p>
+            <label for="email">Email</label><input type="email" name="email"><br />
+        </p>
+        <p>
+            <label for="text">Keywords</label><input type="text" name="keywords"><br />
+        </p>
+        <p>
+            <label for="text">WordsNumber</label><input type="range" name="num" min="1" max="10"><br />
+        </p>
+        <p>
+            <input type="submit" value="Filter"><br />
+        </p>
+    </form>
+</section>
+<p>
+    @Html.ActionLink("Add New Post", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Video)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
