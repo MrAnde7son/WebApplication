@@ -40,7 +40,7 @@
             @Html.DisplayNameFor(model => model.SiteUrl)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Comments.Count)
+            @Html.DisplayNameFor(model => model.Comments)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Content)
@@ -51,33 +51,43 @@
         <th>
             @Html.DisplayNameFor(model => model.Video)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SiteUrl)
-            </td>
-            <th>
-                @Html.DisplayFor(model => item.Comments)
-            </th>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Video)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteUrl)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Comments.Count)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Video)
+                </td>
+                <tr>
+                    foreach (Comment item in item.Comments){
+                        <td>
+                            @Html.DisplayFor(modelItem => comment)
+                        </td>
+                    }
+                </tr>
             <td>
                 <form action="#" method="post">
                     <h3>Post a comment</h3>
