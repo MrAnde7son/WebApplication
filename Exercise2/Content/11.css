@@ -42,7 +42,7 @@ Font
 */
 @font-face {
   font-family: "Bitstream Vera Serif Bold";
-  src: url("https://mdn.mozillademos.org/files/2468/VeraSeBd.ttf");
+  src: url("VeraSeBd.ttf");
 }
 body { 
 	font-family: "Bitstream Vera Serif Bold", serif 
@@ -102,7 +102,7 @@ nav {
 				margin-left: 22px;
 				padding-left: 33px;
 				text-align: left;
-				background: url("~/Content/images/rss.png") left center no-repeat;
+				background: url("images/rss.png") left center no-repeat;
 			}
 
 
@@ -175,7 +175,7 @@ nav {
 aside {
     display: table-cell;
     width: 300px;
-    background: url("~/Content/images/sidebar_background.png") top left;
+    background: url("images/sidebar_background.png") top left;
 }
 
 

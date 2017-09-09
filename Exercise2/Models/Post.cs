@@ -17,6 +17,6 @@ namespace WebApplication2.Models
         public string Content { get; set; }
         public byte[] Image { get; set; }
         public byte[] Video { get; set; }
-        public virtual ICollection<Comment> Comments{ get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

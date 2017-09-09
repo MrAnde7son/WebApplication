@@ -28,22 +28,19 @@
         </p>
     </form>
 </section>
-<p>
-    @Html.ActionLink("Add New Post", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Subject)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AuthorName)
+            @Html.DisplayNameFor(model => model.PublishedDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SiteUrl)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PublishedDate)
+            @Html.DisplayNameFor(model => model.Comments.Count)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Content)
@@ -57,35 +54,52 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuthorName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SiteUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublishedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Video)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteUrl)
+            </td>
+            <th>
+                @Html.DisplayFor(model => item.Comments)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Video)
+            </td>
+            <td>
+                <form action="#" method="post">
+                    <h3>Post a comment</h3>
+                    <div>
+                        <label for="name">Name</label>
+                        <input name="name" id="name" type="text" required />
+                    </div>
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input name="email" id="email" type="email" required />
+                    </div>
+                    <div>
+                        <label for="website">Website</label>
+                        <input name="website" id="website" type="url" />
+                    </div>
+                    <div>
+                        <label for="comment">Comment</label>
+                        <textarea name="comment" id="comment" required></textarea>
+                    </div>
+                    <div><input type="submit" value="Post comment" /></div>
+                </form>
+            </td>
+        </tr>
+    }
 </table>

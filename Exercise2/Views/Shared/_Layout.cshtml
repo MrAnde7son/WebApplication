@@ -2,7 +2,7 @@
 <html>
 <head>
     @Styles.Render("~/Content/css")
-   
+    <link href="@Url.Content("~/Content/11.css")"rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header>
@@ -19,7 +19,7 @@
             <li><a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Posts" }, Request.Url.Scheme)">Blog</a></li>
             <li><a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Fans" }, Request.Url.Scheme)">Fan Club</a></li>
             <li><a href="#">Contact</a></li>
-            <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
+            <li class="subscribe"><a href="#">Subscribe</a></li>
         </ul>
     </nav>
     <section id="intro">
