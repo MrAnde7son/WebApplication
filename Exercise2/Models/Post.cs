@@ -15,8 +15,8 @@ namespace WebApplication2.Models
         public string SiteUrl { get; set; }
         public DateTime PublishedDate { get; set; }
         public string Content { get; set; }
-        public byte[] Image { get; set; }
-        public byte[] Video { get; set; }
+        public string Image { get; set; }
+        public string Video { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }

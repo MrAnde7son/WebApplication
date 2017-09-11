@@ -5,6 +5,7 @@
 }
 
 <h2>Blog</h2>
+<a href="@Url.Action("Management", null, new { area = string.Empty, controller = "Posts" }, Request.Url.Scheme)">Admin Page</a><br />
 <section id="filter">
     <form action="#" method="get">
         <h3>Filter posts</h3>
@@ -77,14 +78,16 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Image)
+                    <img src="@Url.Content(item.Image)" alt="Image" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Video)
+                    <source src="@Url.Content(item.Video)" type="video/mp4" />
                 </td>
                 <tr>
                     foreach (Comment item in item.Comments){
                         <td>
-                            @Html.DisplayFor(modelItem => comment)
+                            @Html.DisplayFor(modelItem => item)
                         </td>
                     }
                 </tr>
