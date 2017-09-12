@@ -475,3 +475,4 @@ C:\Users\Itamar\Source\Repos\WebApplication\Exercise2\obj\Debug\Exercise2.csproj
 C:\Users\Itamar\Source\Repos\WebApplication\Exercise2\obj\Debug\Exercise2.csproj.CoreCompileInputs.cache
 C:\Users\Itamar\Source\Repos\WebApplication\Exercise2\obj\Debug\Exercise2.dll
 C:\Users\Itamar\Source\Repos\WebApplication\Exercise2\obj\Debug\Exercise2.pdb
+C:\Users\Itamar\Source\Repos\WebApplication\Exercise2\obj\Debug\Exercise2.Migrations.third.resources

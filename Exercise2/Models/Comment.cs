@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     {
         public int ID { get; set; }
         public int PostID { get; set; }
-        public DateTime PublishedDate;
+        public DateTime PublishedDate { get; set; }
         public string Subject { get; set; }
         public string AuthorName { get; set; }
         public string SiteUrl { get; set; }

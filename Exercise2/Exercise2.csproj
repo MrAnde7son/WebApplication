@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201709021620203_Initial.Designer.cs">
       <DependentUpon>201709021620203_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709122010055_third.cs" />
+    <Compile Include="Migrations\201709122010055_third.Designer.cs">
+      <DependentUpon>201709122010055_third.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fan.cs" />
@@ -225,7 +229,8 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Posts\Management.cshtml" />
+    <Content Include="Views\Posts\Admin.cshtml" />
+    <Content Include="Views\Posts\CreateComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -246,6 +251,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709021620203_Initial.resx">
       <DependentUpon>201709021620203_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709122010055_third.resx">
+      <DependentUpon>201709122010055_third.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
