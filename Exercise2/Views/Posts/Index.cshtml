@@ -5,7 +5,7 @@
 }
 
 <h2>Blog</h2>
-<a href="@Url.Action("Management", null, new { area = string.Empty, controller = "Posts" }, Request.Url.Scheme)">Admin Page</a><br />
+<a href="@Url.Action("Admin", null, new { area = string.Empty, controller = "Posts" }, Request.Url.Scheme)">Admin Page</a><br />
 <section id="filter">
     <form action="#" method="get">
         <h3>Filter posts</h3>
@@ -29,90 +29,38 @@
         </p>
     </form>
 </section>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PublishedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SiteUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Video)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th></th>
-    </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Subject)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PublishedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SiteUrl)
-                </td>
-                <th>
-                    @Html.DisplayFor(modelItem => item.Comments.Count)
-                </th>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Image)
-                    <img src="@Url.Content(item.Image)" alt="Image" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Video)
-                    <source src="@Url.Content(item.Video)" type="video/mp4" />
-                </td>
-                <tr>
-                    foreach (Comment item in item.Comments){
-                        <td>
-                            @Html.DisplayFor(modelItem => item)
-                        </td>
-                    }
-                </tr>
-            <td>
-                <form action="#" method="post">
-                    <h3>Post a comment</h3>
-                    <div>
-                        <label for="name">Name</label>
-                        <input name="name" id="name" type="text" required />
-                    </div>
-                    <div>
-                        <label for="email">E-mail</label>
-                        <input name="email" id="email" type="email" required />
-                    </div>
-                    <div>
-                        <label for="website">Website</label>
-                        <input name="website" id="website" type="url" />
-                    </div>
-                    <div>
-                        <label for="comment">Comment</label>
-                        <textarea name="comment" id="comment" required></textarea>
-                    </div>
-                    <div><input type="submit" value="Post comment" /></div>
-                </form>
-            </td>
-        </tr>
+@foreach (var item in Model)
+{
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Html.DisplayFor(modelItem => item.Subject)</h2>
+                <p><a href="@Url.Content(item.SiteUrl)">@Url.Content(item.AuthorName)</a></p>
+                <p>@Html.DisplayFor(modelItem => item.PublishedDate)</p>
+            </header>
+            <p>
+                @Html.DisplayFor(modelItem => item.Content)
+                <img src=@Html.DisplayFor(modelItem => item.Image) alt="Flower" />
+                <iframe width="315" height="215" src="@Html.DisplayFor(modelItem => item.Video)" frameborder="0" allowfullscreen></iframe>
+        </article>
+    </section>
+    <h3> Comments</h3>
+    foreach (var comment in item.Comments)
+    {
+        <section id="comments">
+            <article>
+                <header>
+                    <a href="@Url.Content(comment.SiteUrl)">@Url.Content(comment.AuthorName)</a>
+                    <p>@Html.DisplayFor(commentItem => comment.Subject)</p>
+                </header>
+                <p>@Html.DisplayFor(commentItem => comment.Content)</p>
+            </article>
+            <br />
+        </section>
     }
-</table>
+    
+
+}
+
+
