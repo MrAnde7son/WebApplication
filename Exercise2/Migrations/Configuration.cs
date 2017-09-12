@@ -5,14 +5,15 @@ namespace Exercise2.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Exercise2.Models.FanClub>
+    internal sealed class Configuration : DbMigrationsConfiguration<WebApplication2.Models.PostContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "WebApplication2.Models.PostContext";
         }
 
-        protected override void Seed(Exercise2.Models.FanClub context)
+        protected override void Seed(WebApplication2.Models.PostContext context)
         {
             //  This method will be called after migrating to the latest version.
 
