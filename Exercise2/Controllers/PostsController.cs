@@ -104,6 +104,12 @@ namespace Exercise2.Controllers
             return View(post);
         }
 
+        // GET: Posts/Admin
+        public ActionResult Admin()
+        {
+            return View(db.Posts.ToList());
+        }
+
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -115,6 +121,28 @@ namespace Exercise2.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost, ActionName("CreateComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateComment([Bind(Include = "ID,Subject,AuthorName,SiteUrl,Content")] Comment comment)
+        {
+            comment.PublishedDate = DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                db.Commnets.Add(comment);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost, ActionName("DeleteComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteComment(int id)
+        {
+            var comment = db.Commnets.Find(id);
+            db.Commnets.Remove(comment);
+            db.SaveChanges();
+            return RedirectToAction("Index", new { id = comment.PostID });
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
