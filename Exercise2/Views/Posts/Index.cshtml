@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<WebApplication2.Models.Post>
 
+
 @{
     ViewBag.Title = "Blog";
 }
@@ -42,17 +43,18 @@
             <p>
                 @Html.DisplayFor(modelItem => item.Content)
                 <img src=@Html.DisplayFor(modelItem => item.Image) alt="Flower" />
-                <iframe width="315" height="215" src="@Html.DisplayFor(modelItem => item.Video)" frameborder="0" allowfullscreen></iframe>
+                <iframe width="315" height="215" src="@Html.DisplayFor(modelItem => item.Video)" frameborder="0"></iframe>
         </article>
     </section>
     <h3> Comments</h3>
+
     foreach (var comment in item.Comments)
     {
         <section id="comments">
             <article>
                 <header>
-                    <a href="@Url.Content(comment.SiteUrl)">@Url.Content(comment.AuthorName)</a>
                     <p>@Html.DisplayFor(commentItem => comment.Subject)</p>
+                    <a href="@Url.Content(comment.SiteUrl)">@Url.Content(comment.AuthorName)</a>
                 </header>
                 <p>@Html.DisplayFor(commentItem => comment.Content)</p>
             </article>
@@ -61,10 +63,33 @@
 
 
     }
-    <p>
-        @Html.ActionLink("Add Comment", "CreateComment", item.ID)
-    </p>
+    using(Html.BeginForm("CreateComment", "Posts", FormMethod.Post))
+    {
+        var comment = new WebApplication2.Models.Comment();
+        comment.PostID = item.ID;
+        comment.Post = item;
+        comment.PublishedDate = DateTime.Now;
+
+        @Html.AntiForgeryToken();
+        <h3>Post a comment</h3>
+        @Html.HiddenFor(modelItem => comment.PostID);
+        <p>
+            @Html.LabelFor(modelItem => comment.Subject, "Subject")
+            @Html.EditorFor(modelItem => comment.Subject)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.AuthorName)
+            @Html.EditorFor(modelItem => comment.AuthorName)
+        </p><p>
+            @Html.LabelFor(modelItem => comment.SiteUrl)
+            @Html.EditorFor(modelItem => comment.SiteUrl)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.Content, "Content")
+            @Html.EditorFor(modelItem => comment.Content)
+        </p>
+        <p><input type="submit" value="Post" /></p>
+    }
 
 }
-
 
