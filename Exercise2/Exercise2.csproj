@@ -162,6 +162,10 @@
     <Compile Include="Migrations\201709122010055_third.Designer.cs">
       <DependentUpon>201709122010055_third.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709151547144_forth.cs" />
+    <Compile Include="Migrations\201709151547144_forth.Designer.cs">
+      <DependentUpon>201709151547144_forth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fan.cs" />
@@ -194,6 +198,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\VeraSeBd.ttf" />
+    <Content Include="Controllers\Posts\Admin.cshtml" />
+    <Content Include="Controllers\Posts\Create.cshtml" />
+    <Content Include="Controllers\Posts\Delete.cshtml" />
+    <Content Include="Controllers\Posts\Details.cshtml" />
+    <Content Include="Controllers\Posts\Edit.cshtml" />
+    <Content Include="Controllers\Posts\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -230,7 +240,6 @@
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
     <Content Include="Views\Posts\Admin.cshtml" />
-    <Content Include="Views\Posts\CreateComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -254,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709122010055_third.resx">
       <DependentUpon>201709122010055_third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709151547144_forth.resx">
+      <DependentUpon>201709151547144_forth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

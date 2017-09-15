@@ -63,6 +63,7 @@
 
 
     }
+
     using(Html.BeginForm("CreateComment", "Posts", FormMethod.Post))
     {
         var comment = new WebApplication2.Models.Comment();
@@ -73,15 +74,16 @@
         @Html.AntiForgeryToken();
         <h3>Post a comment</h3>
         @Html.HiddenFor(modelItem => comment.PostID);
+        @Html.HiddenFor(modelItem => comment.PublishedDate);
         <p>
             @Html.LabelFor(modelItem => comment.Subject, "Subject")
             @Html.EditorFor(modelItem => comment.Subject)
         </p>
         <p>
-            @Html.LabelFor(modelItem => comment.AuthorName)
+            @Html.LabelFor(modelItem => comment.AuthorName, "AuthorName")
             @Html.EditorFor(modelItem => comment.AuthorName)
         </p><p>
-            @Html.LabelFor(modelItem => comment.SiteUrl)
+            @Html.LabelFor(modelItem => comment.SiteUrl, "SiteUrl")
             @Html.EditorFor(modelItem => comment.SiteUrl)
         </p>
         <p>

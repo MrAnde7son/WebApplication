@@ -123,8 +123,9 @@ namespace Exercise2.Controllers
 
         [HttpPost, ActionName("CreateComment")]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateComment([Bind(Include = "Subject,AuthorName,SiteUrl,Content")] Comment comment)
+        public ActionResult CreateComment([Bind(Include = "ID,PostID,PublishedDate,Subject,AuthorName,SiteUrl,Content")] Comment comment)
         {
+            comment.PublishedDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Commnets.Add(comment);

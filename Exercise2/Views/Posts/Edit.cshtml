@@ -73,6 +73,20 @@
             </div>
         </div>
 
+        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+        @foreach (var comment in model.Comments)
+        {
+            <id class="form-group">
+                <div class="col-md-10">
+                    <header>
+                        <p>@Html.DisplayFor(commentItem => comment.Subject)</p>
+                        <a href="@Url.Content(comment.SiteUrl)">@Url.Content(comment.AuthorName)</a>
+                    </header>
+                    <p>@Html.DisplayFor(commentItem => comment.Content)</p>
+                </div>
+            </id>
+        }
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

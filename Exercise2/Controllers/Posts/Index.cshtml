@@ -1,0 +1,95 @@
+﻿@model IEnumerable<WebApplication2.Models.Post>
+
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+<h2>Blog</h2>
+<a href="@Url.Action("Admin", null, new { area = string.Empty, controller = "Posts" }, Request.Url.Scheme)">Admin Page</a><br />
+<section id="filter">
+    <form action="#" method="get">
+        <h3>Filter posts</h3>
+        <p>
+            <label for="date">Date</label><input type="date" name="date"><br />
+        </p>
+        <p>
+            <label for="name">Name</label><input type="text" name="name"><br />
+        </p>
+        <p>
+            <label for="email">Email</label><input type="email" name="email"><br />
+        </p>
+        <p>
+            <label for="text">Keywords</label><input type="text" name="keywords"><br />
+        </p>
+        <p>
+            <label for="text">WordsNumber</label><input type="range" name="num" min="1" max="10"><br />
+        </p>
+        <p>
+            <input type="submit" value="Filter"><br />
+        </p>
+    </form>
+</section>
+
+@foreach (var item in Model)
+{
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Html.DisplayFor(modelItem => item.Subject)</h2>
+                <p><a href="@Url.Content(item.SiteUrl)">@Url.Content(item.AuthorName)</a></p>
+                <p>@Html.DisplayFor(modelItem => item.PublishedDate)</p>
+            </header>
+            <p>
+                @Html.DisplayFor(modelItem => item.Content)
+                <img src=@Html.DisplayFor(modelItem => item.Image) alt="Flower" />
+                <iframe width="315" height="215" src="@Html.DisplayFor(modelItem => item.Video)" frameborder="0"></iframe>
+        </article>
+    </section>
+    <h3> Comments</h3>
+
+    foreach (var comment in item.Comments)
+    {
+        <section id="comments">
+            <article>
+                <header>
+                    <p>@Html.DisplayFor(commentItem => comment.Subject)</p>
+                    <a href="@Url.Content(comment.SiteUrl)">@Url.Content(comment.AuthorName)</a>
+                </header>
+                <p>@Html.DisplayFor(commentItem => comment.Content)</p>
+            </article>
+            <br />
+        </section>
+
+
+    }
+    using(Html.BeginForm("CreateComment", "Posts", FormMethod.Post))
+    {
+        var comment = new WebApplication2.Models.Comment();
+        comment.PostID = item.ID;
+        comment.Post = item;
+        comment.PublishedDate = DateTime.Now;
+
+        @Html.AntiForgeryToken();
+        <h3>Post a comment</h3>
+        @Html.HiddenFor(modelItem => comment.PostID);
+        <p>
+            @Html.LabelFor(modelItem => comment.Subject, "Subject")
+            @Html.EditorFor(modelItem => comment.Subject)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.AuthorName)
+            @Html.EditorFor(modelItem => comment.AuthorName)
+        </p><p>
+            @Html.LabelFor(modelItem => comment.SiteUrl)
+            @Html.EditorFor(modelItem => comment.SiteUrl)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.Content, "Content")
+            @Html.EditorFor(modelItem => comment.Content)
+        </p>
+        <p><input type="submit" value="Post" /></p>
+    }
+
+}
+
