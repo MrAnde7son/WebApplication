@@ -574,3 +574,4 @@ C:\Users\user\source\repos\WebApplication\Exercise2\obj\Debug\Exercise2.csproj.C
 C:\Users\user\source\repos\WebApplication\Exercise2\obj\Debug\Exercise2.dll
 C:\Users\user\source\repos\WebApplication\Exercise2\obj\Debug\Exercise2.pdb
 C:\Users\user\source\repos\WebApplication\Exercise2\obj\Debug\Exercise2.Migrations.forth.resources
+C:\Users\Itamar\Source\Repos\WebApplication\Exercise2\obj\Debug\Exercise2.Migrations.forth.resources

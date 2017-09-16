@@ -121,6 +121,20 @@ namespace Exercise2.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ManageComments(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post.Comments.ToList());
+        }
+
         [HttpPost, ActionName("CreateComment")]
         [ValidateAntiForgeryToken]
         public ActionResult CreateComment([Bind(Include = "ID,PostID,PublishedDate,Subject,AuthorName,SiteUrl,Content")] Comment comment)
