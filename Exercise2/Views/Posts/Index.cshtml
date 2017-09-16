@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication2.Models.Post>
+@model IEnumerable<WebApplication2.Models.Post>
 
 
 @{
@@ -53,10 +53,11 @@
         <section id="comments">
             <article>
                 <header>
-                    <p>@Html.DisplayFor(commentItem => comment.Subject)</p>
-                    <a href="@Url.Content(comment.SiteUrl)">@Url.Content(comment.AuthorName)</a>
+                    <p>@Html.DisplayFor(commentItem => comment.Subject)</p><br />
+                    <p>@Html.DisplayFor(commentItem => comment.PublishedDate)</p><br />
+                    <a href="@Url.Content(comment.SiteUrl)">@Url.Content(comment.AuthorName)</a><br />
                 </header>
-                <p>@Html.DisplayFor(commentItem => comment.Content)</p>
+                <p>@Html.DisplayFor(commentItem => comment.Content)</p><br />
             </article>
             <br />
         </section>
