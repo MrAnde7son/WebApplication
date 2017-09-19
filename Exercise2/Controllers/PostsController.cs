@@ -104,12 +104,6 @@ namespace Exercise2.Controllers
             return View(post);
         }
 
-        // GET: Posts/Admin
-        public ActionResult Admin()
-        {
-            return View(db.Posts.ToList());
-        }
-
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -119,6 +113,12 @@ namespace Exercise2.Controllers
             db.Posts.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: Posts/Admin
+        public ActionResult Admin()
+        {
+            return View(db.Posts.ToList());
         }
 
         public ActionResult ManageComments(int? id)
@@ -132,7 +132,23 @@ namespace Exercise2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(post.Comments.ToList());
+            return View(post.Comments);
+        }
+
+        // POST: Posts/ManageComments/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ManageComments([Bind(Include = "ID,Comments")] Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(post).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(post);
         }
 
         [HttpPost, ActionName("CreateComment")]
@@ -147,16 +163,32 @@ namespace Exercise2.Controllers
             }
             return RedirectToAction("Index");
         }
+        // GET: Posts/DeleteComment/5
+        public ActionResult DeleteComment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = db.Commnets.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
 
+        // POST: Posts/DeleteComment/5
         [HttpPost, ActionName("DeleteComment")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteComment(int id)
+        public ActionResult DeleteCommentConfirmed(int id)
         {
-            var comment = db.Commnets.Find(id);
+            Comment comment = db.Commnets.Find(id);
             db.Commnets.Remove(comment);
             db.SaveChanges();
-            return RedirectToAction("Index", new { id = comment.PostID });
+            return RedirectToAction("Admin");
         }
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

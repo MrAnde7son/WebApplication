@@ -47,7 +47,7 @@
         </article>
     </section>
     <h3> Comments</h3>
-
+    <label for="text">Total Comments:</label> @Html.DisplayFor(modelItem => item.Comments.Count) <br />
     foreach (var comment in item.Comments)
     {
         <section id="comments">

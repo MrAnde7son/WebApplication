@@ -175,9 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\11.css" />
-    <Content Include="Content\11.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\got.mp3" />
     <Content Include="Content\images\flower.png" />
     <Content Include="Content\images\intro_background.png" />
     <Content Include="Content\images\intro_flower.png" />
@@ -187,7 +187,6 @@
     <Content Include="Content\images\shauli.mp4" />
     <Content Include="Content\images\sidebar_background.png" />
     <Content Include="Content\images\sidebar_section_background.png" />
-    <Content Include="Content\killbill.mp3" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -213,6 +212,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MyScripts.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -241,6 +241,7 @@
     <Content Include="Views\Posts\Index.cshtml" />
     <Content Include="Views\Posts\Admin.cshtml" />
     <Content Include="Views\Posts\ManageComments.cshtml" />
+    <Content Include="Views\Posts\DeleteComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
